@@ -40,13 +40,13 @@ function createDeleteTransactionBtn(id) {
    deleteBtn.classList.add('delete-btn')
    deleteBtn.textContent = 'Excluir'
    deleteBtn.addEventListener('click', async () => {
-      await fetch(`http://localhost:3000/transactions/${id}`, { 
-         method: 'DELETE' 
+      await fetch(`http://localhost:3000/transactions/${id}`, {
+         method: 'DELETE'
       })
-   deleteBtn.parentElement.remove()
-   const indexToRemove = transactions.findIndex((t) => t.id === id)
-   transactions.splice(indexToRemove, 1)
-   updateBalance()
+      deleteBtn.parentElement.remove()
+      const indexToRemove = transactions.findIndex((t) => t.id === id)
+      transactions.splice(indexToRemove, 1)
+      updateBalance()
    })
    return deleteBtn
 }
@@ -70,8 +70,8 @@ async function saveTransaction(ev) {
    const amount = parseFloat(document.querySelector('#amount').value)
 
    if (id) {
-      const response = await fetch(`http://localhost:3000/transactions/${id}`, { 
-         method: 'PUT', 
+      const response = await fetch(`http://localhost:3000/transactions/${id}`, {
+         method: 'PUT',
          body: JSON.stringify({ name, amount }),
          headers: {
             'Content-Type': 'application/json'
@@ -95,9 +95,12 @@ async function saveTransaction(ev) {
       transactions.push(transaction)
       renderTransaction(transaction)
    }
+
    ev.target.reset()
    updateBalance()
-   id = ""
+
+   // Limpar o valor do input hidden #id
+   document.querySelector('#id').value = ""
 }
 
 function createEditTransactionBtn(transaction) {
@@ -137,3 +140,4 @@ async function setup() {
 document.addEventListener("DOMContentLoaded", setup)
 document.querySelector('form').addEventListener('submit', saveTransaction)
 
+console.log(transactions)
