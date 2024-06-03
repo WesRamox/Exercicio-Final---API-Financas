@@ -1,9 +1,24 @@
 {
-   "finance": [
-      {
-         "id": 1,
-         "title": "Compras",
-         "value": 500
-      }
-   ]
+  "transactions": [
+    {
+      "name": "Wesa",
+      "amount": 110,
+      "id": 1
+    },
+    {
+      "name": "Conta de água",
+      "amount": -60,
+      "id": 4
+    },
+    {
+      "name": "Weas",
+      "amount": 11,
+      "id": 5
+    },
+    {
+      "name": "Salario",
+      "amount": 11,
+      "id": 6
+    }
+  ]
 }
